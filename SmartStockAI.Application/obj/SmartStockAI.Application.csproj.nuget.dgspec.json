@@ -1,0 +1,160 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj": {}
+  },
+  "projects": {
+    "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj",
+        "projectName": "SmartStockAI.Application",
+        "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj",
+        "packagesPath": "/Users/robertoflores/.nuget/packages/",
+        "outputPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/robertoflores/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Domain/SmartStockAI.Domain.csproj": {
+                "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Domain/SmartStockAI.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Hangfire": {
+              "target": "Package",
+              "version": "[1.8.20, )"
+            },
+            "Hangfire.AspNetCore": {
+              "target": "Package",
+              "version": "[1.8.20, )"
+            },
+            "Hangfire.PostgreSql": {
+              "target": "Package",
+              "version": "[1.20.12, )"
+            },
+            "Hangfire.SqlServer": {
+              "target": "Package",
+              "version": "[1.8.20, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.5.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Domain/SmartStockAI.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Domain/SmartStockAI.Domain.csproj",
+        "projectName": "SmartStockAI.Domain",
+        "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Domain/SmartStockAI.Domain.csproj",
+        "packagesPath": "/Users/robertoflores/.nuget/packages/",
+        "outputPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/robertoflores/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

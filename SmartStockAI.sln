@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStockAI.Api", "SmartStockAI.Api\SmartStockAI.Api.csproj", "{12C28537-18E4-45FA-A4FD-F06E9AF79B14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStockAI.Application", "SmartStockAI.Application\SmartStockAI.Application.csproj", "{125D6588-48E9-4B27-8D3E-072E3A6183E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStockAI.Domain", "SmartStockAI.Domain\SmartStockAI.Domain.csproj", "{F2DF0F4B-6559-4103-A02B-6F668B7D9613}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartStockAI.Infrastructure", "SmartStockAI.Infrastructure\SmartStockAI.Infrastructure.csproj", "{CA3B5D4E-C3E4-40F6-AA96-0615DD1D9F87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12C28537-18E4-45FA-A4FD-F06E9AF79B14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12C28537-18E4-45FA-A4FD-F06E9AF79B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12C28537-18E4-45FA-A4FD-F06E9AF79B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12C28537-18E4-45FA-A4FD-F06E9AF79B14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{125D6588-48E9-4B27-8D3E-072E3A6183E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125D6588-48E9-4B27-8D3E-072E3A6183E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125D6588-48E9-4B27-8D3E-072E3A6183E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125D6588-48E9-4B27-8D3E-072E3A6183E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2DF0F4B-6559-4103-A02B-6F668B7D9613}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2DF0F4B-6559-4103-A02B-6F668B7D9613}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2DF0F4B-6559-4103-A02B-6F668B7D9613}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2DF0F4B-6559-4103-A02B-6F668B7D9613}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA3B5D4E-C3E4-40F6-AA96-0615DD1D9F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA3B5D4E-C3E4-40F6-AA96-0615DD1D9F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA3B5D4E-C3E4-40F6-AA96-0615DD1D9F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA3B5D4E-C3E4-40F6-AA96-0615DD1D9F87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
