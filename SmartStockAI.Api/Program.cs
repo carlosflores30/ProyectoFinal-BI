@@ -19,6 +19,7 @@ app.UseHttpsRedirection();
 app.UseRouting();
 app.UseSwagger();
 app.UseAuthentication();
+app.UseMiddleware<IdleTimeoutMiddleware>(); 
 app.UseHangfireDashboard("/hangfire"); 
 app.UseAuthorization();
 app.UseMiddleware<AuthenticationValidationMiddleware>();
