@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SmartStockAI.Application.Interfaces.Authentication;
 using SmartStockAI.Domain.Authentication.Entities;
+using Claim = System.Security.Claims.Claim;
 
 namespace SmartStockAI.Infrastructure.Authentication.Security;
 
@@ -17,14 +18,14 @@ public class JwtService : IJwtService
         _configuration = configuration;
     }
 
-    public string GenerateToken(int userId, string email, string role, int idNegocio)
+    public string GenerateToken(int userId, string email, string role, int? idNegocio)
     {
         var claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
             new Claim(JwtRegisteredClaimNames.Email, email),
             new Claim(ClaimTypes.Role, role),
-            new Claim("idNegocio", idNegocio.ToString()) // <--- este es el que faltaba
+            new Claim("idNegocio", idNegocio?.ToString() ?? string.Empty) // ✅ evita error si es null
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));

@@ -4,5 +4,5 @@ namespace SmartStockAI.Application.Interfaces.Authentication;
 
 public interface IJwtService
 {
-    string GenerateToken(int userId, string email, string role, int idNegocio);
+    string GenerateToken(int userId, string email, string role, int? idNegocio);
 }
