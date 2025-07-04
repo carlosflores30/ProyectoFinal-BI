@@ -19,7 +19,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
         policy =>
         {
-            policy.WithOrigins("https://frontend-fe2y.onrender.com") // ← frontend correcto
+            policy.WithOrigins("https://frontend2-f5en.onrender.com") // ← frontend correcto
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
