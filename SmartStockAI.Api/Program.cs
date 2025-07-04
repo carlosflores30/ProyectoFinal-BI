@@ -17,7 +17,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
         policy  =>
         {
-            policy.WithOrigins("http://localhost:5173")
+                policy.WithOrigins("https://frontend-fe2y.onrender.com")
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials(); 
@@ -35,13 +35,14 @@ builder.Services.AddProjectServices(builder.Configuration);
 
 var app = builder.Build();
 app.UseRouting();
+app.UseHttpsRedirection(); 
 app.UseCors("_myAllowSpecificOrigins");
-app.UseSwagger();
 app.UseAuthentication();
 app.UseMiddleware<IdleTimeoutMiddleware>(); 
 app.UseHangfireDashboard("/hangfire"); 
 app.UseAuthorization();
 app.UseMiddleware<AuthenticationValidationMiddleware>();
+app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "SmartStockAI API v1");
