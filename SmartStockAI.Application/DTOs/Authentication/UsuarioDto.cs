@@ -12,7 +12,6 @@ public class UsuarioDto
     public int RoleId { get; set; }
     public int? NegocioId { get; set; }
 
-
-    // ✅ Datos del negocio asociados
+    
     public NegocioMiniDto? Negocio { get; set; }
 }

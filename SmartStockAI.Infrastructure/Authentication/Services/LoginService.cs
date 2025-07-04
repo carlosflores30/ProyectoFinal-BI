@@ -67,15 +67,12 @@ public class LoginService : ILoginService
         var roleName = user.IdRolNavigation?.Nombre;
         if (string.IsNullOrWhiteSpace(roleName))
             roleName = "User";
-
-        if (user.NegocioId == null)
-            throw new Exception("El usuario no tiene asignado un negocio.");
-
+        
         var token = _jwtService.GenerateToken(
             user.Id,
             user.Correo!,
             roleName,
-            user.NegocioId.Value 
+            user.NegocioId 
         );
 
         return new LoginResponse
