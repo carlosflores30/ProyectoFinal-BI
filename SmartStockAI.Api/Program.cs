@@ -14,14 +14,18 @@ var builder = WebApplication.CreateBuilder(args);
 
 // CORS Policy
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
         policy =>
         {
-            policy.WithOrigins("https://frontend2-f5en.onrender.com/api") // ← frontend correcto
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
+            policy.WithOrigins(
+                    "https://frontend2-f5en.onrender.com", // ✅ SIN /api
+                    "http://localhost:5173")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials(); // ✅ si usas autenticación con cookies o tokens
         });
 });
 
