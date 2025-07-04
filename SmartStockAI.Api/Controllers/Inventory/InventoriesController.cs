@@ -15,7 +15,7 @@ public class InventoriesController(IMediator _mediator) : ControllerBase
     public async Task<IActionResult> ObtenerMovimientos()
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-        var query = new GetAllMovimientosQuery(idNegocio);
+        var query = new GetAllMovimientosQuery();
         var result = await _mediator.Send(query);
         return Ok(result);
     }
@@ -24,7 +24,7 @@ public class InventoriesController(IMediator _mediator) : ControllerBase
     public async Task<IActionResult> GetByVenta(int idVenta)
     {
         int idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-        var query = new GetMovimientosByVentaQuery(idVenta, idNegocio);
+        var query = new GetMovimientosByVentaQuery(idVenta);
         var result = await _mediator.Send(query);
         return Ok(result);
     }
@@ -32,7 +32,7 @@ public class InventoriesController(IMediator _mediator) : ControllerBase
     public async Task<IActionResult> GetByProducto(int idProducto)
     {
         int idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-        var query = new GetMovimientosByProductoQuery(idNegocio, idProducto);
+        var query = new GetMovimientosByProductoQuery( idProducto);
         var result = await _mediator.Send(query);
         return Ok(result);
     }
@@ -41,7 +41,7 @@ public class InventoriesController(IMediator _mediator) : ControllerBase
     public async Task<IActionResult> GetByTipo([FromRoute] string tipo)
     {
         int idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-        var query = new GetMovimientosByTipoQuery(tipo, idNegocio);
+        var query = new GetMovimientosByTipoQuery(tipo);
         var result = await _mediator.Send(query);
         return Ok(result);
     }

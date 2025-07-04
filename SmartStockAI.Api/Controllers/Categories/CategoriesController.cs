@@ -17,9 +17,7 @@ public class CategoriesController(IMediator _mediator) : ControllerBase
     [Authorize]
     public async Task<IActionResult> CrearCategoria([FromBody] CreateCategoriaDto dto)
     {
-        var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-
-        var command = new CreateCategoriaCommand(dto, idNegocio);
+        var command = new CreateCategoriaCommand(dto);
         var id = await _mediator.Send(command);
 
         return CreatedAtAction(nameof(ObtenerCategoria), new { id }, new { id });
@@ -31,7 +29,7 @@ public class CategoriesController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var query = new GetMyCategoriaByIdQuery(id, idNegocio);
+        var query = new GetMyCategoriaByIdQuery(id);
         var categoria = await _mediator.Send(query);
 
         return categoria is null ? NotFound() : Ok(categoria);
@@ -41,9 +39,7 @@ public class CategoriesController(IMediator _mediator) : ControllerBase
     [Authorize]
     public async Task<IActionResult> ObtenerCategorias()
     {
-        var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-
-        var query = new GetAllMyCategoriasQuery(idNegocio);
+        var query = new GetAllMyCategoriasQuery();
         var categorias = await _mediator.Send(query);
 
         return Ok(categorias);
@@ -55,7 +51,7 @@ public class CategoriesController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var command = new PatchCategoriaCommand(id, idNegocio, dto);
+        var command = new PatchCategoriaCommand(id, dto);
         var result = await _mediator.Send(command);
 
         return result ? NoContent() : NotFound();
@@ -67,7 +63,7 @@ public class CategoriesController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var command = new DeleteCategoriaCommand(id, idNegocio);
+        var command = new DeleteCategoriaCommand(id);
         var result = await _mediator.Send(command);
 
         return result ? NoContent() : NotFound();

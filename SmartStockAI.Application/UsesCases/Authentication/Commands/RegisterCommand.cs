@@ -51,7 +51,7 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, LoginResp
         await _unitOfWork.Users.AddAsync(newuser);
         await _unitOfWork.SaveChangesAsync();
 
-        var token = _jwtService.GenerateToken(newuser.Id, newuser.Correo, newuser.RoleName ?? "User");
+        var token = _jwtService.GenerateToken(newuser.Id, newuser.Correo, newuser.RoleName ?? "User", newuser.NegocioId.Value);
         
         var role = await _unitOfWork.RolesRepository.GetByIdAsync(newuser.IdRol);
 

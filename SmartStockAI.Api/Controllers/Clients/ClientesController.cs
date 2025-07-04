@@ -17,9 +17,7 @@ public class ClientesController(IMediator _mediator) : ControllerBase
     [Authorize]
     public async Task<IActionResult> CrearCliente([FromBody] CreateClienteDto dto)
     {
-        var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-
-        var command = new CreateClienteCommand(dto, idNegocio);
+        var command = new CreateClienteCommand(dto);
         var id = await _mediator.Send(command);
 
         return CreatedAtAction(nameof(ObtenerCliente), new { id }, new { id });
@@ -29,9 +27,8 @@ public class ClientesController(IMediator _mediator) : ControllerBase
     [Authorize]
     public async Task<IActionResult> ObtenerCliente(int id)
     {
-        var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var query = new GetMyClienteByIdQuery(id, idNegocio);
+        var query = new GetMyClienteByIdQuery(id);
         var cliente = await _mediator.Send(query);
 
         return cliente is null ? NotFound() : Ok(cliente);
@@ -43,7 +40,7 @@ public class ClientesController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var query = new GetAllMyClientesQuery(idNegocio);
+        var query = new GetAllMyClientesQuery();
         var clientes = await _mediator.Send(query);
 
         return Ok(clientes);
@@ -55,7 +52,7 @@ public class ClientesController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var command = new PatchClienteCommand(id, idNegocio, dto);
+        var command = new PatchClienteCommand(id, dto);
         var result = await _mediator.Send(command);
 
         return result ? NoContent() : NotFound();
@@ -67,7 +64,7 @@ public class ClientesController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var command = new DeleteClienteCommand(id, idNegocio);
+        var command = new DeleteClienteCommand(id);
         var result = await _mediator.Send(command);
 
         return result ? NoContent() : NotFound();

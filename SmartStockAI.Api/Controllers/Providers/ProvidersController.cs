@@ -20,7 +20,7 @@ public class ProvidersController(IMediator _mediator) : ControllerBase
         // Obtener el ID del negocio desde el usuario autenticado
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var command = new CreateProveedorCommand(dto, idNegocio);
+        var command = new CreateProveedorCommand(dto);
         var id = await _mediator.Send(command);
 
         return CreatedAtAction(nameof(ObtenerProveedor), new { id }, new { id });
@@ -31,7 +31,7 @@ public class ProvidersController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var query = new GetMyProveedorByIdQuery(id, idNegocio);
+        var query = new GetMyProveedorByIdQuery(id);
         var proveedor = await _mediator.Send(query);
 
         return proveedor is null ? NotFound() : Ok(proveedor);
@@ -43,7 +43,7 @@ public class ProvidersController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var query = new GetAllMyProveedoresQuery(idNegocio);
+        var query = new GetAllMyProveedoresQuery();
         var proveedores = await _mediator.Send(query);
 
         return Ok(proveedores);
@@ -55,7 +55,7 @@ public class ProvidersController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var command = new PatchProveedorCommand(id, idNegocio, dto);
+        var command = new PatchProveedorCommand(id, dto);
         var result = await _mediator.Send(command);
 
         return result ? NoContent() : NotFound();
@@ -67,7 +67,7 @@ public class ProvidersController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var command = new DeleteProveedorCommand(id, idNegocio);
+        var command = new DeleteProveedorCommand(id);
         var result = await _mediator.Send(command);
 
         return result ? NoContent() : NotFound();

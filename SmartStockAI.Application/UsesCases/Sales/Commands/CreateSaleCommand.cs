@@ -3,6 +3,7 @@ using MediatR;
 using System;
 using Hangfire;
 using SmartStockAI.Application.DTOs.Sales;
+using SmartStockAI.Application.Interfaces.Authentication;
 using SmartStockAI.Application.Interfaces.Notifications;
 using SmartStockAI.Domain.Inventory.Entities;
 using SmartStockAI.Domain.Sales.Entities;
@@ -10,21 +11,24 @@ using SmartStockAI.Domain.UnitOfWork.Interfaces;
 
 namespace SmartStockAI.Application.UsesCases.Sales.Commands;
 
-public record CreateSaleCommand(CreateSaleDto SaleDto, int IdNegocio, int IdUsuario) : IRequest<int>;
+public record CreateSaleCommand(CreateSaleDto SaleDto, int IdUsuario) : IRequest<int>;
 
 public class CreateSaleCommandHandler : IRequestHandler<CreateSaleCommand, int>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly IUserContextService _userContextService;
 
-    public CreateSaleCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+    public CreateSaleCommandHandler(IUnitOfWork unitOfWork, IMapper mapper, IUserContextService userContextService)
     {
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _userContextService = userContextService;
     }
 
     public async Task<int> Handle(CreateSaleCommand request, CancellationToken cancellationToken)
     {
+        var negocioId = _userContextService.GetNegocioId();
         decimal totalVenta = 0;
         var detallesVenta = new List<DetalleDeVenta>();
         var movimientos = new List<MovimientoInventario>();
@@ -33,7 +37,7 @@ public class CreateSaleCommandHandler : IRequestHandler<CreateSaleCommand, int>
         {
             var producto = await _unitOfWork.ProductosRepository.GetByIdAsync(item.IdProducto);
 
-            if (producto == null || producto.IdNegocio != request.IdNegocio)
+            if (producto == null || producto.IdNegocio != negocioId)
                 throw new ApplicationException($"Producto {item.IdProducto} no válido.");
 
             if (producto.Stock < item.Cantidad)
@@ -71,7 +75,7 @@ public class CreateSaleCommandHandler : IRequestHandler<CreateSaleCommand, int>
                 FechaMovimiento = DateTime.UtcNow,
                 Observacion = $"Venta registrada",
                 IdUsuario = request.IdUsuario,
-                IdNegocio = request.IdNegocio
+                IdNegocio = negocioId
             });
         }
 
@@ -79,7 +83,7 @@ public class CreateSaleCommandHandler : IRequestHandler<CreateSaleCommand, int>
         var venta = new Venta
         {
             IdCliente = request.SaleDto.IdCliente,
-            IdNegocio = request.IdNegocio,
+            IdNegocio = negocioId,
             MetodoPago = request.SaleDto.MetodoPago,
             FechaVenta = DateTime.UtcNow,
             TotalVenta = totalVenta

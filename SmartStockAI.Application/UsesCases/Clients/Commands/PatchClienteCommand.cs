@@ -1,19 +1,21 @@
 using MediatR;
 using SmartStockAI.Application.DTOs.Clients;
+using SmartStockAI.Application.Interfaces.Authentication;
 using SmartStockAI.Domain.UnitOfWork.Interfaces;
 
 namespace SmartStockAI.Application.UsesCases.Clients.Commands;
 
-public record PatchClienteCommand( int IdCliente, int IdNegocio, PatchClienteDto Dto) : IRequest<bool>;
+public record PatchClienteCommand( int IdCliente, PatchClienteDto Dto) : IRequest<bool>;
 
-public class PatchClienteCommandHandler(IUnitOfWork _unitOfWork) : IRequestHandler<PatchClienteCommand, bool>
+public class PatchClienteCommandHandler(IUnitOfWork _unitOfWork, IUserContextService _userContextService) : IRequestHandler<PatchClienteCommand, bool>
 {
 
     public async Task<bool> Handle(PatchClienteCommand request, CancellationToken cancellationToken)
     {
+        var negocioID = _userContextService.GetNegocioId();
         var cliente = await _unitOfWork.ClienteRepository.GetByIdAsync(request.IdCliente);
 
-        if (cliente == null || cliente.IdNegocio != request.IdNegocio)
+        if (cliente == null || cliente.IdNegocio != negocioID)
             return false;
 
         if (!string.IsNullOrWhiteSpace(request.Dto.Nombre))

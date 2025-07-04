@@ -10,5 +10,6 @@ public interface ISaleRepository
     Task DeleteAsync(int id);
     Task<bool> HayVentasRecientesAsync(int idProducto, int idNegocio, DateTime desde);
     Task<Venta?> GetByIdAsync(int idVenta);
+    Task<decimal> ObtenerTotalVentasDelMesAsync(int negocioId, int mes, int anio);
 
 }

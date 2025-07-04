@@ -59,4 +59,14 @@ public class UserRepository : IUserRepository
         await _context.SaveChangesAsync();
         user.Id = model.Id;
     }
+    
+    public async Task<Usuario> GetByIdWithNegocioAsync(int id)
+    {
+        var model = await _context.Usuarios
+            .Include(u => u.Negocio)
+            .FirstOrDefaultAsync(u => u.Id == id);
+
+        return _mapper.Map<Usuario>(model); // Entidad del dominio
+    }
+
 }

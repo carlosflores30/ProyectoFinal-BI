@@ -1,21 +1,23 @@
 using Hangfire;
 using MediatR;
 using SmartStockAI.Application.DTOs.EntriesStock;
+using SmartStockAI.Application.Interfaces.Authentication;
 using SmartStockAI.Application.Interfaces.Notifications;
 using SmartStockAI.Domain.Inventory.Entities;
 using SmartStockAI.Domain.UnitOfWork.Interfaces;
 
 namespace SmartStockAI.Application.UsesCases.Inventory.Commands;
 
-public record EntryStockCommand(EntryStockDto Dto, int IdNegocio, int IdUsuario) : IRequest<bool>;
+public record EntryStockCommand(EntryStockDto Dto, int IdUsuario) : IRequest<bool>;
 
-public class EntryStockCommandHandler(IUnitOfWork _unitOfWork) : IRequestHandler<EntryStockCommand, bool>
+public class EntryStockCommandHandler(IUnitOfWork _unitOfWork, IUserContextService _userContextService) : IRequestHandler<EntryStockCommand, bool>
 {
     public async Task<bool> Handle(EntryStockCommand request, CancellationToken cancellationToken)
     {
+        var negocioId = _userContextService.GetNegocioId();
         var producto = await _unitOfWork.ProductosRepository.GetByIdAsync(request.Dto.IdProducto);
 
-        if (producto == null || producto.IdNegocio != request.IdNegocio)
+        if (producto == null || producto.IdNegocio != negocioId)
             return false;
 
         producto.Stock += request.Dto.Cantidad;
@@ -29,7 +31,7 @@ public class EntryStockCommandHandler(IUnitOfWork _unitOfWork) : IRequestHandler
             FechaMovimiento = DateTime.UtcNow,
             Observacion = request.Dto.Observacion,
             IdUsuario = request.IdUsuario,
-            IdNegocio = request.IdNegocio
+            IdNegocio = negocioId
         };
 
         var idmovimiento = await _unitOfWork.MovimientoInventarioRepository.AddAsync(movimiento);

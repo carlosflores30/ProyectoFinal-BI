@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using SmartStockAI.Application.DTOs.Negocios;
 using SmartStockAI.Application.UsesCases.Negocios.Commands;
 using SmartStockAI.Application.UsesCases.Negocios.Queries;
+using SmartStockAI.Domain.Negocios.Entities;
 
 namespace SmartStockAI.Api.Controllers.Negocios;
 
@@ -21,8 +22,8 @@ public class NegociosController(IMediator _mediator) : ControllerBase
 
         var command = new CreateNegocioCommand(dto, usuarioId);
 
-        var id = await _mediator.Send(command);
-        return CreatedAtAction(nameof(ObtenerNegocio), new { id }, new { id });
+        var resultado = await _mediator.Send(new CreateNegocioCommand(dto, usuarioId));
+        return Ok(resultado);
     }
     
     [Authorize]
@@ -31,7 +32,7 @@ public class NegociosController(IMediator _mediator) : ControllerBase
     {
         var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var query = new GetMyNegocioByIdQuery(id, usuarioId);
+        var query = new GetMyNegocioByIdQuery(id);
         var negocio = await _mediator.Send(query);
 
         if (negocio == null)

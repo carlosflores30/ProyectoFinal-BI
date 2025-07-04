@@ -18,7 +18,7 @@ public class ProductosController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var command = new CreateProductoCommand(dto, idNegocio);
+        var command = new CreateProductoCommand(dto);
         var id = await _mediator.Send(command);
 
         return CreatedAtAction(nameof(ObtenerProducto), new { id }, new { id });
@@ -29,7 +29,7 @@ public class ProductosController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var query = new GetAllMyProductosQuery(idNegocio);
+        var query = new GetAllMyProductosQuery();
         var productos = await _mediator.Send(query);
 
         return Ok(productos);
@@ -40,7 +40,7 @@ public class ProductosController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var query = new GetMyProductoByIdQuery(id, idNegocio);
+        var query = new GetMyProductoByIdQuery(id);
         var producto = await _mediator.Send(query);
 
         return producto is null ? NotFound() : Ok(producto);
@@ -51,7 +51,7 @@ public class ProductosController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var command = new PatchProductoCommand(id, idNegocio, dto);
+        var command = new PatchProductoCommand(id, dto);
         var result = await _mediator.Send(command);
 
         return result ? NoContent() : NotFound();
@@ -62,7 +62,7 @@ public class ProductosController(IMediator _mediator) : ControllerBase
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
-        var command = new DeleteProductoCommand(id, idNegocio);
+        var command = new DeleteProductoCommand(id);
         var result = await _mediator.Send(command);
 
         return result ? NoContent() : NotFound();

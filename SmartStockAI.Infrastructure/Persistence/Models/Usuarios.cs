@@ -24,12 +24,14 @@ public partial class Usuarios
     public DateTime? BloqueadoHasta { get; set; }
 
     public DateTime? FechaCreacion { get; set; }
+    public int? NegocioId { get; set; }
 
     public virtual Roles? IdRolNavigation { get; set; }
 
     public virtual ICollection<MovimientosInventario> MovimientosInventario { get; set; } = new List<MovimientosInventario>();
 
-    public virtual Negocios Negocio { get; set; }
+    public virtual Negocios? Negocio { get; set; }
+    public virtual Negocios? NegocioNavigation { get; set; } 
     public virtual ICollection<PasswordResetTokens> PasswordResetTokens { get; set; } = new List<PasswordResetTokens>();
     
 }

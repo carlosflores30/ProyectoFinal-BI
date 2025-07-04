@@ -8,7 +8,7 @@ public class Negocio
     public string Ruc { get; set; } = default!;
     public string RazonSocial { get; set; } = default!;
     public string? Direccion { get; set; }
-    public int IdUsuario { get; set; }  // ID del usuario propietario
+    public int IdUsuario { get; set; }  
 
     public Usuario? Usuario { get; set; }
 }

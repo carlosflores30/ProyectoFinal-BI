@@ -1,4 +1,5 @@
 using AutoMapper;
+using SmartStockAI.Application.DTOs.Authentication;
 using SmartStockAI.Application.DTOs.Categories;
 using SmartStockAI.Application.DTOs.Clients;
 using SmartStockAI.Application.DTOs.Inventory;
@@ -32,10 +33,14 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.RoleName,
                 opt => opt.MapFrom(
                     src => src.IdRolNavigation != null ? src.IdRolNavigation.Nombre : null))
-            .ReverseMap();
-        CreateMap<Usuarios, SmartStockAI.Domain.Authentication.Entities.Usuario>()
-            .ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => src.IdRolNavigation.Nombre));
-        //Roles
+            .ForMember(dest => dest.NegocioId, opt => opt.MapFrom(src => src.NegocioId));
+        CreateMap<Usuario, Usuarios>();
+        CreateMap<Usuario, LoginResponse>()
+            .ForMember(dest => dest.NegocioId, 
+                opt => opt.MapFrom(src => src.NegocioId));
+        CreateMap<LoginRequest, Usuario>();
+
+          //Roles
         CreateMap<EfRole, DomainRole>().ReverseMap();
         CreateMap<EfRole, DomainRole>()
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Nombre))
@@ -55,6 +60,11 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.IdUsuarioNavigation, opt => opt.Ignore());
         CreateMap<Negocio, NegocioDto>().ReverseMap();
         CreateMap<CrearNegocioDto, Negocio>();
+        
+        CreateMap<Usuario, UsuarioDto>()
+            .ForMember(dest => dest.Negocio, opt => opt.MapFrom(src => src.Negocio));
+        
+        CreateMap<Negocio, NegocioMiniDto>();
         
         //Productos
         CreateMap<Persistence.Models.Productos, Producto>().ReverseMap(); 

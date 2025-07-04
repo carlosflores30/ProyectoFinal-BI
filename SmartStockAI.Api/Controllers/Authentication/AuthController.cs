@@ -1,7 +1,9 @@
+using System.Security.Claims;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SmartStockAI.Application.DTOs.Authentication;
 using SmartStockAI.Application.UsesCases.Authentication.Commands;
+using SmartStockAI.Application.UsesCases.Authentication.Queries;
 
 namespace SmartStockAI.Api.Controllers.Authentication;
 
@@ -51,4 +53,13 @@ public class AuthController(IMediator _mediator) : ControllerBase
         await _mediator.Send(command);
         return Ok(new { message = "Se ha enviado un enlace para restablecer tu contraseña si el correo es válido." });
     }
+    
+    [HttpGet("perfil")]
+    public async Task<IActionResult> ObtenerMiPerfil()
+    {
+        var usuarioId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        var perfil = await _mediator.Send(new GetPerfilQuery(usuarioId));
+        return Ok(perfil);
+    }
+
 }

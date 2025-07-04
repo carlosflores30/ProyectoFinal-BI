@@ -15,10 +15,16 @@ public class UserContextService : IUserContextService
 
     public int GetNegocioId()
     {
-        var claim = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.NameIdentifier);
-        return claim != null ? int.Parse(claim.Value) : throw new UnauthorizedAccessException("No se encontró el ID del negocio");
-    }
+        var user = _httpContextAccessor.HttpContext?.User;
 
+        // ⚠️ Aquí accede directamente a "sub" (id del usuario), o incluso a un valor de sesión
+        var negocioIdStr = user?.Claims.FirstOrDefault(x => x.Type == "idNegocio")?.Value;
+
+        if (string.IsNullOrEmpty(negocioIdStr))
+            throw new UnauthorizedAccessException("No se encontró el id del negocio en el contexto.");
+
+        return int.Parse(negocioIdStr);
+    }
     public int GetUsuarioId()
     {
         var claim = _httpContextAccessor.HttpContext?.User.FindFirst(ClaimTypes.Name);

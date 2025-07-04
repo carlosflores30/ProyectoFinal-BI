@@ -68,10 +68,14 @@ public class LoginService : ILoginService
         if (string.IsNullOrWhiteSpace(roleName))
             roleName = "User";
 
+        if (user.NegocioId == null)
+            throw new Exception("El usuario no tiene asignado un negocio.");
+
         var token = _jwtService.GenerateToken(
             user.Id,
             user.Correo!,
-            roleName
+            roleName,
+            user.NegocioId.Value 
         );
 
         return new LoginResponse
@@ -79,7 +83,8 @@ public class LoginService : ILoginService
             FullName = $"{user.Nombre} {user.Apellido}",
             Email = user.Correo!,
             Token = token,
-            Role = roleName
+            Role = roleName,
+            NegocioId = user.NegocioId
         };
     }
 }

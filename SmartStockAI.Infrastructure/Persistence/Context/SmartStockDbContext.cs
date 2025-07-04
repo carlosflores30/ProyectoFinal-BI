@@ -406,10 +406,21 @@ public partial class SmartStockDbContext : DbContext
             entity.Property(e => e.Telefono)
                 .HasMaxLength(20)
                 .HasColumnName("telefono");
+            entity.Property(e => e.NegocioId).HasColumnName("negocio_id");
 
             entity.HasOne(d => d.IdRolNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdRol)
                 .HasConstraintName("usuarios_id_rol_fkey");
+            entity.HasOne(u => u.Negocio)
+                .WithOne(n => n.IdUsuarioNavigation)
+                .HasForeignKey<Models.Negocios>(n => n.IdUsuario)
+                .HasConstraintName("negocios_id_usuario_fkey");
+            entity.HasOne(u => u.NegocioNavigation)
+                .WithOne()
+                .HasForeignKey<Usuarios>(u => u.NegocioId)
+                .HasConstraintName("usuarios_negocio_id_fkey")
+                .OnDelete(DeleteBehavior.SetNull);
+
         });
 
         modelBuilder.Entity<Ventas>(entity =>

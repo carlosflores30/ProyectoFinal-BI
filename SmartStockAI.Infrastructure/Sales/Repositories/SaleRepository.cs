@@ -6,6 +6,7 @@ using SmartStockAI.Application.Interfaces.Reports;
 using SmartStockAI.Domain.Sales.Entities;
 using SmartStockAI.Domain.Sales.Interfaces;
 using SmartStockAI.Infrastructure.Persistence.Context;
+using System.Linq;
 
 namespace SmartStockAI.Infrastructure.Sales.Repositories;
 
@@ -88,5 +89,17 @@ public class SaleRepository : ISaleRepository, IVentaReportService
 
         return _mapper.Map<Venta?>(entidad);
     }
+    public async Task<decimal> ObtenerTotalVentasDelMesAsync(int negocioId, int mes, int anio)
+    {
+        var total = await _context.Ventas
+            .Where(v => v.FechaVenta.HasValue &&
+                        v.FechaVenta.Value.Month == mes &&
+                        v.FechaVenta.Value.Year == anio &&
+                        v.IdNegocio == negocioId)
+            .SumAsync(v => (decimal?)v.TotalVenta);
+
+        return total ?? 0m;
+    }
+
 
 }

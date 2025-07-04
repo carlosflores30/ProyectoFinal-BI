@@ -19,7 +19,7 @@ public class EntriesStockController(IMediator _mediator) : Controller
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
         var idUsuario = idNegocio;
 
-        var command = new EntryStockCommand(dto, idNegocio, idUsuario);
+        var command = new EntryStockCommand(dto, idUsuario);
         var resultado = await _mediator.Send(command);
 
         return resultado ? Ok("Stock ingresado correctamente.") : BadRequest("No se pudo ingresar el stock.");

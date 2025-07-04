@@ -1,3 +1,5 @@
+using SmartStockAI.Domain.Negocios.Entities;
+
 namespace SmartStockAI.Domain.Authentication.Entities;
 
 public class Usuario
@@ -14,5 +16,8 @@ public class Usuario
     public DateTime? BloqueadoHasta { get; set; }
     public DateTime FechaCreacion { get; set; }
     public string? RoleName { get; set; }
+    public int? NegocioId { get; set; }
+
+    public Negocio? Negocio { get; set; }
 
 }

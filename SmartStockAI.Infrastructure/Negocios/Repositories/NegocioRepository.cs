@@ -37,7 +37,20 @@ public class NegocioRepository : INegocioRepository
         var model = _mapper.Map<Persistence.Models.Negocios>(negocio);
         await _context.Negocios.AddAsync(model);
         await _context.SaveChangesAsync();
+        
         negocio.Id = model.Id;
+        
+        // ✅ Validar existencia de usuario
+        if (model.IdUsuario <= 0)
+            throw new Exception("El negocio no tiene asignado un IdUsuario válido.");
+
+        var usuario = await _context.Usuarios.FindAsync(model.IdUsuario);
+        if (usuario == null)
+            throw new Exception($"No se encontró el usuario con ID {model.IdUsuario}.");
+
+        usuario.NegocioId = model.Id;
+        _context.Usuarios.Update(usuario);
+        await _context.SaveChangesAsync();
     }
 
     public void Update(Negocio negocio)

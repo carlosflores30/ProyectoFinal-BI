@@ -10,13 +10,32 @@ using SmartStockAI.Infrastructure;
 using SmartStockAI.Infrastructure.Mappers;
 using SmartStockAI.Infrastructure.Persistence.Context;
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy  =>
+        {
+            policy.WithOrigins("http://localhost:5173")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials(); 
+        });
+});
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(int.Parse(port)); // OJO: No uses localhost ni loopback
+});
+
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddProjectServices(builder.Configuration);
 
 var app = builder.Build();
-app.UseHttpsRedirection();
 app.UseRouting();
+app.UseCors("_myAllowSpecificOrigins");
 app.UseSwagger();
 app.UseAuthentication();
 app.UseMiddleware<IdleTimeoutMiddleware>(); 

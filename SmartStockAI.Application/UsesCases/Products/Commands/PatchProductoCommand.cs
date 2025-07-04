@@ -1,24 +1,28 @@
 using MediatR;
 using SmartStockAI.Application.DTOs.Products;
+using SmartStockAI.Application.Interfaces.Authentication;
 using SmartStockAI.Domain.UnitOfWork.Interfaces;
 
 namespace SmartStockAI.Application.UsesCases.Products.Commands;
 
-public record PatchProductoCommand(int Id, int IdNegocio, PatchProductoDto ProductoDto) : IRequest<bool>;
+public record PatchProductoCommand(int Id, PatchProductoDto ProductoDto) : IRequest<bool>;
 
 public class PatchProductoCommandHandler : IRequestHandler<PatchProductoCommand, bool>
 {
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IUserContextService _userContextService;
 
-    public PatchProductoCommandHandler(IUnitOfWork unitOfWork)
+    public PatchProductoCommandHandler(IUnitOfWork unitOfWork, IUserContextService userContextService)
     {
         _unitOfWork = unitOfWork;
+        _userContextService = userContextService;
     }
 
     public async Task<bool> Handle(PatchProductoCommand request, CancellationToken cancellationToken)
     {
+        var negocioId = _userContextService.GetNegocioId();
         var producto = await _unitOfWork.ProductosRepository.GetByIdAsync(request.Id);
-        if (producto == null || producto.IdNegocio != request.IdNegocio)
+        if (producto == null || producto.IdNegocio != negocioId)
             return false;
 
         var dto = request.ProductoDto;

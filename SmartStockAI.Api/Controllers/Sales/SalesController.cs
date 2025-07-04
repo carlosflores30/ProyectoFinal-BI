@@ -21,7 +21,7 @@ public class SalesController(IMediator _mediator) : ControllerBase
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
         var idUsuario = idNegocio; // si usas el mismo claim como usuario actual
 
-        var command = new CreateSaleCommand(dto, idNegocio, idUsuario);
+        var command = new CreateSaleCommand(dto, idUsuario);
         var id = await _mediator.Send(command);
 
         return CreatedAtAction(nameof(ObtenerVenta), new { id }, new { id });
@@ -33,7 +33,7 @@ public class SalesController(IMediator _mediator) : ControllerBase
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
         var idUsuario = idNegocio; // Si estás usando el mismo claim como ID de usuario
 
-        var resultado = await _mediator.Send(new DeleteSaleCommand(id, idNegocio, idUsuario));
+        var resultado = await _mediator.Send(new DeleteSaleCommand(id, idUsuario));
 
         if (!resultado)
             return NotFound("Venta no encontrada o no autorizada.");
@@ -45,7 +45,7 @@ public class SalesController(IMediator _mediator) : ControllerBase
     public async Task<IActionResult> ObtenerVentas()
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-        var query = new GetAllMySalesQuery(idNegocio);
+        var query = new GetAllMySalesQuery();
 
         var ventas = await _mediator.Send(query);
         return Ok(ventas);
@@ -56,7 +56,7 @@ public class SalesController(IMediator _mediator) : ControllerBase
     public async Task<IActionResult> ObtenerVenta(int id)
     {
         var idNegocio = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
-        var query = new GetSaleByIdQuery(id, idNegocio);
+        var query = new GetSaleByIdQuery(id);
 
         var venta = await _mediator.Send(query);
 
