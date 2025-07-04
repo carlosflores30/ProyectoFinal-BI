@@ -8763,19 +8763,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/robertoflores/.nuget/packages/": {}
+    "C:\\Users\\HP\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Infrastructure/SmartStockAI.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Infrastructure\\SmartStockAI.Infrastructure.csproj",
       "projectName": "SmartStockAI.Infrastructure",
-      "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Infrastructure/SmartStockAI.Infrastructure.csproj",
-      "packagesPath": "/Users/robertoflores/.nuget/packages/",
-      "outputPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Infrastructure/obj/",
+      "projectPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Infrastructure\\SmartStockAI.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/robertoflores/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
@@ -8787,8 +8787,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj": {
-              "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj"
+            "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Application\\SmartStockAI.Application.csproj": {
+              "projectPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Application\\SmartStockAI.Application.csproj"
             }
           }
         }
@@ -8896,7 +8896,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

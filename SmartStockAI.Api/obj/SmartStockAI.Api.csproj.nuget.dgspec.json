@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Api/SmartStockAI.Api.csproj": {}
+    "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Api\\SmartStockAI.Api.csproj": {}
   },
   "projects": {
-    "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Api/SmartStockAI.Api.csproj": {
+    "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Api\\SmartStockAI.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Api/SmartStockAI.Api.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Api\\SmartStockAI.Api.csproj",
         "projectName": "SmartStockAI.Api",
-        "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Api/SmartStockAI.Api.csproj",
-        "packagesPath": "/Users/robertoflores/.nuget/packages/",
-        "outputPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Api/obj/",
+        "projectPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Api\\SmartStockAI.Api.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/robertoflores/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -26,11 +26,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj": {
-                "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj"
+              "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Application\\SmartStockAI.Application.csproj": {
+                "projectPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Application\\SmartStockAI.Application.csproj"
               },
-              "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Infrastructure/SmartStockAI.Infrastructure.csproj": {
-                "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Infrastructure/SmartStockAI.Infrastructure.csproj"
+              "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Infrastructure\\SmartStockAI.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Infrastructure\\SmartStockAI.Infrastructure.csproj"
               }
             }
           }
@@ -127,21 +127,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj": {
+    "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Application\\SmartStockAI.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Application\\SmartStockAI.Application.csproj",
         "projectName": "SmartStockAI.Application",
-        "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj",
-        "packagesPath": "/Users/robertoflores/.nuget/packages/",
-        "outputPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/obj/",
+        "projectPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Application\\SmartStockAI.Application.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/robertoflores/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -153,8 +153,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Domain/SmartStockAI.Domain.csproj": {
-                "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Domain/SmartStockAI.Domain.csproj"
+              "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Domain\\SmartStockAI.Domain.csproj": {
+                "projectPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Domain\\SmartStockAI.Domain.csproj"
               }
             }
           }
@@ -220,21 +220,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Domain/SmartStockAI.Domain.csproj": {
+    "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Domain\\SmartStockAI.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Domain/SmartStockAI.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Domain\\SmartStockAI.Domain.csproj",
         "projectName": "SmartStockAI.Domain",
-        "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Domain/SmartStockAI.Domain.csproj",
-        "packagesPath": "/Users/robertoflores/.nuget/packages/",
-        "outputPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Domain/obj/",
+        "projectPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Domain\\SmartStockAI.Domain.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/robertoflores/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -279,21 +279,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Infrastructure/SmartStockAI.Infrastructure.csproj": {
+    "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Infrastructure\\SmartStockAI.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Infrastructure/SmartStockAI.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Infrastructure\\SmartStockAI.Infrastructure.csproj",
         "projectName": "SmartStockAI.Infrastructure",
-        "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Infrastructure/SmartStockAI.Infrastructure.csproj",
-        "packagesPath": "/Users/robertoflores/.nuget/packages/",
-        "outputPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Infrastructure/obj/",
+        "projectPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Infrastructure\\SmartStockAI.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/robertoflores/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -305,8 +305,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj": {
-                "projectPath": "/Users/robertoflores/RiderProjects/SmartStockAI/SmartStockAI.Application/SmartStockAI.Application.csproj"
+              "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Application\\SmartStockAI.Application.csproj": {
+                "projectPath": "C:\\Users\\HP\\RiderProjects\\ProyectoFinal-BI\\SmartStockAI.Application\\SmartStockAI.Application.csproj"
               }
             }
           }
@@ -414,7 +414,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
